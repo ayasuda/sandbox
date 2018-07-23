@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'with_gradle.Application'
+
+jar {
+  manifest {
+    baseName = 'app'
+    attributes('Main-Class': mainClassName)
+  }
+}
