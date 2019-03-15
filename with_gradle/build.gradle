@@ -1,5 +1,14 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+  }
+}
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 mainClassName = 'with_gradle.Application'
 
 jar {
@@ -7,4 +16,12 @@ jar {
     baseName = 'app'
     attributes('Main-Class': mainClassName)
   }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'org.yaml', name: 'snakeyaml', version: '1.21'
 }
