@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"syscall"
 	"time"
 )
 
@@ -14,13 +13,13 @@ func main() {
 	done := make(chan bool, 1)
 	sigs := make(chan os.Signal, 1)
 
-	signal.Notify(sigs, syscall.SIGINT)
+	signal.Notify(sigs, os.Interrupt)
 
 	cnt := 0
 
 	go func() {
 		for {
-			_ = <-ticker.C
+			<-ticker.C
 			cnt += 1
 			fmt.Println(cnt)
 		}
